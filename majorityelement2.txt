@@ -1,0 +1,14 @@
+#include <bits/stdc++.h> 
+vector<int> majorityElementII(vector<int> &arr)
+{
+    // Write your code here.
+    vector<int> result;
+    map<int,int> hash;
+    for(int i=0;i<arr.size();i++){
+        hash[arr[i]]++;
+    }
+    for(auto i:hash){
+        if(i.second>arr.size()/3){result.push_back(i.first);}
+    }
+    return result;
+}

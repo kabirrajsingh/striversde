@@ -1,0 +1,17 @@
+#include <bits/stdc++.h> 
+int findMajorityElement(int arr[], int n) {
+	// Write your code here.
+    int limit;
+    if(n%2==0){limit=n/2+1;}
+    
+    else{limit=(n/2)+1;}
+//     cout<<limit<<endl;
+    map<int,int> hash;
+    for(int i=0;i<n;i++){
+        hash[arr[i]]++;
+    }
+    for(auto i:hash){
+        if(i.second>=limit){return i.first;}
+    }
+    return -1;
+}

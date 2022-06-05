@@ -1,0 +1,26 @@
+#include<iostream>
+bool isValidParenthesis(string expression)
+{
+    // Write your code here.
+    stack<char> st;
+    for(auto i:expression){
+        if(i=='(' || i=='{' || i=='['){
+//             cout<<"hey1"<<endl;
+            st.push(i);
+        }else{
+            if(st.empty()){
+//             cout<<"hey3"<<endl;
+            return false;}
+            else{
+                if((st.top()=='(' && i==')') || (st.top()=='{' && i=='}') || (st.top()=='[' && i==']')){
+//                     cout<<"hey2"<<endl;
+                    st.pop();
+                }else{return false;}
+            }
+        }
+        
+    }   
+    if(st.empty()){return true;}
+//         cout<<"here2"<<endl;
+        return false;
+}
