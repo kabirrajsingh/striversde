@@ -1,0 +1,30 @@
+#include <bits/stdc++.h> 
+vector<vector<int>>& setrow(vector<vector<int>> &matrix,int r,int cols){
+    for(int i=0;i<cols;i++){
+//         cout<<"rowop"<<endl;
+        if(matrix[r][i]!=0){matrix[r][i]=-1;}
+    }
+    return matrix;
+}
+void setcol(vector<vector<int>> &matrix,int c,int rows){
+    for(int i=0;i<rows;i++){
+//         cout<<"colop"<<endl;
+        if(matrix[i][c]!=0){matrix[i][c]=-1;}
+    }
+}
+
+void setZeros(vector<vector<int>> &matrix)
+{
+	// Write your code here.
+    int rows=matrix.size(),cols=matrix[0].size();
+    for(int i=0;i<rows;i++){
+        for(int  j=0;j<cols;j++){
+            if(matrix[i][j]==0){setrow(matrix,i,cols);setcol(matrix,j,rows);}
+        }
+    }
+    for(int i=0;i<rows;i++){
+        for(int  j=0;j<cols;j++){
+            if(matrix[i][j]==-1){matrix[i][j]=0;;}
+        }
+    }
+}
