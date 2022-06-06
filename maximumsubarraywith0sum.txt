@@ -1,0 +1,20 @@
+#include <bits/stdc++.h> 
+int LongestSubsetWithZeroSum(vector < int > arr) {
+    int sum=0,length=0,maxi=0;    
+//         cout<<"Sum is"<<sum<<"and count is"<<count<<endl;
+    unordered_map<int,int> prefix;
+    prefix[0]=-1;
+    for(int i=0;i<arr.size();i++){
+        sum=sum+arr[i];
+        if(sum==0){
+            maxi=i+1;
+        }
+            if(prefix.find(sum)!=prefix.end()){
+                length=i-prefix[sum];
+                maxi=max(maxi,length);
+            }else{prefix[sum]=i;}
+        
+    }
+    
+    return maxi;
+}

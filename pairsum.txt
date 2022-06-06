@@ -1,0 +1,19 @@
+#include <bits/stdc++.h> 
+vector<vector<int>> pairSum(vector<int> &arr, int s){
+   // Write your code here.
+    vector<vector<int>> result;
+    sort(arr.begin(),arr.end());
+    int low=0,high=arr.size()-1,mid=0;
+    for(int i=0;i<=high;i++){
+        for(int j=i+1;j<=high;j++){
+            if(arr[i]+arr[j]==s){
+//                 cout<<"hey"<<endl;
+                 vector<int>temp;
+                temp.push_back(arr[i]);
+                temp.push_back(arr[j]);
+                result.push_back(temp);
+            }
+        }
+    }
+    return result;
+}
