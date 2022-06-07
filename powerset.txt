@@ -1,0 +1,15 @@
+void r(vector<vector<int>>& res,vector<int> v,int i,int n,vector<int> a){
+    if(i==n) {res.push_back(a); return;}
+    r(res,v,i+1,n,a);
+    a.push_back(v[i]);
+    r(res,v,i+1,n,a);
+    a.pop_back();
+}
+vector<vector<int>> pwset(vector<int>v)
+{
+    //Write your code here
+    vector<vector<int>> res;
+    vector<int> a;
+    r(res,v,0,v.size(),a);
+    return res;
+}

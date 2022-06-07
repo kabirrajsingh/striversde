@@ -1,0 +1,18 @@
+void sumr(vector<int>& num,int n,int i,int sum,vector<int>&ans){
+    if(i==n){
+//         cout<<i<<" "<<sum<<endl;
+        ans.push_back(sum);
+        return;}
+    sumr(num,n,i+1,sum+num[i],ans);
+    sumr(num,n,i+1,sum,ans);
+}
+
+vector<int> subsetSum(vector<int> &num)
+{
+    // Write your code here.
+    vector<int>ans;
+    int n=num.size();
+    sumr(num,n,0,0,ans);
+    sort(ans.begin(),ans.end());
+    return ans;
+}
