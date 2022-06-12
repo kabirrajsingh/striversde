@@ -1,0 +1,16 @@
+int findMinimumCoins(int amount) 
+{
+    // Write your code here
+    int coins[]={1000,500,100,50,20,10,5,2,1};
+    int res=0;
+    for(int i=0;i<=8;i++){
+        if(amount==0){break;}
+        if(amount>=coins[i]){
+//             cout<<"x "<<coins[i];;
+            int z=amount/coins[i];
+            res+=z;
+            amount-=coins[i]*z;
+        }
+    }
+    return res;
+}

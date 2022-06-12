@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+bool comp(pair<int,int> a,pair<int,int> b){
+    return a.second<b.second;    
+}
+
+int maximumActivities(vector<int> &start, vector<int> &finish) {
+    // Write your code here.
+    vector<pair<int,int>> time;
+    for(int i=0;i<start.size();i++){
+        time.push_back({start[i],finish[i]});
+    }
+    sort(time.begin(),time.end(),comp);
+    int end=time[0].second;
+    int res=1;
+    for(int i=1;i<time.size();i++){
+        if(time[i].first>=end){
+            res++;
+            end=time[i].second;
+        }
+    }
+    return res;
+}
