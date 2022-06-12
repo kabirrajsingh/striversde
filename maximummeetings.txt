@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+struct meeting{
+    int start;
+    int end;
+    int pos;
+};
+bool comp(meeting a,meeting b){
+    if(a.end<b.end) return true;
+    else if(a.end>b.end) return false;
+    else if(a.pos<b.pos) return true;
+    else return false;
+}
+
+vector<int> maximumMeetings(vector<int> &start, vector<int> &end) {
+    // Write your code here.
+    vector<meeting> meets;
+    for(int i=0;i<start.size();i++){
+        struct meeting m;
+        m.start=start[i];
+        m.end=end[i];
+        m.pos=i+1;
+        meets.push_back(m);
+    }
+    sort(meets.begin(),meets.end(),comp);
+    int limit=meets[0].end;
+    vector<int> res;
+    res.push_back(meets[0].pos);
+    for(int i=1;i<start.size();i++){
+        if(meets[i].start>limit){
+            res.push_back(meets[i].pos);
+            limit=meets[i].end;
+        }
+    }
+    return res;
+}
