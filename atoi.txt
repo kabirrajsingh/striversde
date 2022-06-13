@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+int atoi(string str) {
+    // Write your code here.
+    stack<int> st;
+    int flag=1;
+    if(str[0]=='-') flag=0;
+    for(auto it:str){
+        if(it<='9' && it>='0'){
+//         cout<<"hey";
+            
+            st.push(it);}
+    }
+    int ans=0;
+    int z=0;
+    while(!st.empty()){
+//         cout<<"hey";
+        ans=ans+(st.top()-'0')*pow(10,z);
+        z++;
+        st.pop();
+    }
+    if(flag) return ans;
+    return -1*ans;
+}
