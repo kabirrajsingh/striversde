@@ -1,0 +1,32 @@
+bool ispossible(vector<int> arr,int m,int n,long long mid){
+    long long tempsum=0;
+    int count=0;
+    for(int i=0;i<m;i++){
+//         cout<<"tempsum is"<<tempsum<<endl;
+        if(arr[i]>mid) return false;
+        if(tempsum+arr[i]>mid){tempsum=arr[i];n--;}
+        else{tempsum+=arr[i];}
+    }
+//     cout<<"value of n is"<<n<<"and mid is"<<mid<<endl;
+    if(n>0) return true;
+    return false;
+}
+
+long long ayushGivesNinjatest(int n, int m, vector<int> time) 
+{	
+	// Write your code here.
+    long long int sum=0;
+    for(auto it:time){sum+=it;}
+    long long low=0,high=sum;
+    long long res=0;
+    while(low<=high){
+        long long int mid=(low+high)/2;
+        if(ispossible(time,m,n,mid)){
+//             cout<<"mid possible at"<<mid<<endl;
+            res=mid;
+            high=mid-1;
+        }else{low=mid+1;}
+    }
+    return res;
+    
+}

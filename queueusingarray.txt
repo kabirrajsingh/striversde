@@ -1,0 +1,42 @@
+class Queue {
+private:
+    int *arr;
+    int fronti;
+    int rear;
+public:
+    Queue() {
+        // Implement the Constructor
+        arr=new int[100001];
+        fronti=0;
+        rear=0;
+    }
+
+    /*----------------- Public Functions of Queue -----------------*/
+
+    bool isEmpty() {
+        // Implement the isEmpty() function
+        if(fronti==rear) return true;
+        return false;
+    }
+
+    void enqueue(int data) {
+        // Implement the enqueue() function
+        arr[rear]=data;
+        rear++;
+    }
+
+    int dequeue() {
+        // Implement the dequeue() function
+        if(isEmpty()) return -1;
+        int temp=arr[fronti];
+        arr[fronti]=-1;
+        fronti++;
+        return temp;
+    }
+
+    int front() {
+        // Implement the front() function
+        if(isEmpty()) return -1;
+        return arr[fronti];
+    }
+};

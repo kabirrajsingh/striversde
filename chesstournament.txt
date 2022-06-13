@@ -1,0 +1,30 @@
+bool ispossible(vector<int> arr,int n,int c,int mid){
+    int i=1,temp=arr[0];
+    int count=1;
+    while(i<n){
+        
+        if(arr[i]-temp>=mid){
+            count++;
+            temp=arr[i++];
+        }else{i++;}
+        
+    }
+    if(count<c) return false;
+    return true;
+}
+
+int chessTournament(vector<int> positions , int n ,  int c){
+	// Write your code here
+    sort(positions.begin(),positions.end());
+    int l=0,h=positions[n-1];
+    int ans=0;
+    while(l<=h){
+        int m=(l+h)/2;
+        if(ispossible(positions,n,c,m)){
+//             cout<<m<<endl;
+            ans=m;
+            l=m+1;
+        }else{h=m-1;}
+    }
+    return ans;
+}

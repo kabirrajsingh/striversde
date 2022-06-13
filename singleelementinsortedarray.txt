@@ -17,5 +17,5 @@ int uniqueElement(vector<int> arr, int n)
             }else{ low=mid+1;}
         }
     }
-    return arr[mid];
+    return arr[low];
 }
