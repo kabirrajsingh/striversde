@@ -1,0 +1,51 @@
+#include <bits/stdc++.h>
+int merge(vector<int> &arr,int l,int h,int mid){
+//     cout<<" "<<l<<" "<<h<<" "<<" ";
+//     cout<<"-->";
+    int i=l;
+    int j=mid+1;
+    int k=0;
+//     cout<<"j is"<<j<<endl;
+    vector<int> temp;
+    int cnt=0;
+    for(int i=l;i<=mid;i++){
+        while(j<=h && arr[i]>2*arr[j]) {j++;}
+        cnt=cnt+(j-(mid+1));
+    }
+//     cout<<"cnt is"<<cnt<<" "<<j<<" "<<mid<<endl;
+    i=l;
+    j=mid+1;
+    k=0;
+    while(i<=mid && j<=h){
+        if(arr[i]<=arr[j]){
+            temp.push_back(arr[i]);i++;
+        }else{
+            temp.push_back(arr[j]);j++;
+        }
+    }
+    while(i<=mid) temp.push_back(arr[i++]);
+    while(j<=h) temp.push_back(arr[j++]);
+    for(auto z:temp) arr[l++]=z;
+//     for(auto it:arr) cout<<it<<" ";
+//     cout<<endl;
+    
+//     cout<<" "<<l<<" "<<h<<" "<<mid<<endl;
+    return cnt;
+    
+}
+int mergesort(vector<int> &arr,int l,int h){
+    if(h<=l) return 0;
+    int cnt=0;
+    int mid=(l+h)/2;
+    
+    cnt+=mergesort(arr,l,mid);
+    cnt+=mergesort(arr,mid+1,h);
+    cnt+=merge(arr,l,h,mid);
+    return cnt;
+}
+int reversePairs(vector<int> &arr, int n){
+	// Write your code here.
+    int ans=mergesort(arr,0,n-1);
+//     for(auto it:arr) cout<<it<<" ";
+    return ans;
+}
